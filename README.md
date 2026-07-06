@@ -151,22 +151,3 @@ To reproduce the findings of the paper, execute the scripts in the following ord
 2.  **Selection Phase:** Review the text files in `outputs/explore_results/` to identify the input differences that achieved the highest silhouette scores.
 3.  **Training Phase:** Run the corresponding training scripts for the promising differences, such as `train_speck_nr5_explored_diff_hw2.py` or `train_simon_nr8_left.py`. These will train the neural distinguishers and save the models in `outputs/freshly_trained_nets/`.
 4.  **Evaluation Phase:** Open `notebooks/check_accuracy.ipynb` and modify the paths to point to your freshly generated `.p` history files. Execute the notebook to verify the final accuracy of the trained neural distinguishers.
-
----
-
-## Notes
-
-*   This repository preserves the original research implementation and experimental logic.
-*   The recent refactoring only reorganized the project structure to improve readability and maintainability.
-*   **No algorithmic behavior has been intentionally changed.** The underlying mathematics, neural network architecture, and cipher implementations remain exactly as originally published.
-
----
-
-## Future Improvements
-
-While the current implementation correctly reflects the research, the following engineering improvements could be considered for future iterations:
-
-*   **Configuration Management:** Abstracting hardcoded parameters (like rounds, block sizes, and epochs) into dedicated YAML or JSON configuration files.
-*   **Experiment Tracking:** Integrating tools like MLflow or Weights & Biases (W&B) to automatically log metrics, hyperparameters, and model artifacts.
-*   **Automated Testing:** Implementing unit tests (e.g., using `pytest`) for the `crypto` modules to ensure cipher implementations remain correct across environments.
-*   **Packaging:** Adding a `pyproject.toml` or `setup.py` to allow the project to be installed as a standard Python module, simplifying imports across scripts and notebooks.
