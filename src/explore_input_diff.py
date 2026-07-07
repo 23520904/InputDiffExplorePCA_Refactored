@@ -4,6 +4,7 @@ import clustering_helper
 import random
 import math
 import time
+from datetime import datetime
 
 def generate_numbers_with_hamming_weight(bit_size = 32, hamming_weight = 1, number_pool=None):
     number = 0
@@ -43,8 +44,9 @@ def explore_input_difference(alg='speck_32_64', blocksize=32, wordsize=16, nr=5,
             score = clustering_helper.calculate_silhouette(pca_results, labels)
             end_time = time.time()
             elapsed_time = end_time - start_time
+            current_time = datetime.now().strftime("%H:%M:%S %d:%m:%y")
             if savepath is not None:
                 with open(savepath, "a") as file:
-                    file.write(f'diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec\n')
+                    file.write(f'[{current_time}] diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec\n')
             else:
-                print(f'diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec')
+                print(f'[{current_time}] diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec')

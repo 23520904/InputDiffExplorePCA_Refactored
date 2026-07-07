@@ -3,3 +3,8 @@ AGENTS.md
 CLAUDE.md
 .claude
 __pycache__
+clustering_results
+explore_results
+logs
+npy
+freshly_trained_net
