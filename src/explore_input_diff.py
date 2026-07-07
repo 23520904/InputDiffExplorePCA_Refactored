@@ -45,8 +45,9 @@ def explore_input_difference(alg='speck_32_64', blocksize=32, wordsize=16, nr=5,
             end_time = time.time()
             elapsed_time = end_time - start_time
             current_time = datetime.now().strftime("%H:%M:%S %d:%m:%y")
+            hex_diff = f"0x{(diff[0] << wordsize) | diff[1]:0{2 * (wordsize // 4)}x}"
             if savepath is not None:
                 with open(savepath, "a") as file:
-                    file.write(f'[{current_time}] diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec\n')
+                    file.write(f'[{current_time}] diff = {hex_diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec\n')
             else:
-                print(f'[{current_time}] diff = {diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec')
+                print(f'[{current_time}] diff = {hex_diff}, silhouette score: {score}, elapsed time: {elapsed_time} sec')
