@@ -2,6 +2,8 @@ from silence_tensorflow import silence_tensorflow
 silence_tensorflow()
 import dataset
 import numpy as np
+import os
+from datetime import datetime
 
 from pickle import dump
 
@@ -13,7 +15,9 @@ from keras import backend as K
 from keras.regularizers import l2
 
 bs = 5000;
-wdir = './outputs/freshly_trained_nets/'
+time_str = datetime.now().strftime('%H%M%S_%d%m%y')
+wdir = f'./outputs/freshly_trained_nets/{time_str}/'
+os.makedirs(wdir, exist_ok=True)
 
 def cyclic_lr(num_epochs, high_lr, low_lr):
   res = lambda i: low_lr + ((num_epochs-1) - i % num_epochs)/(num_epochs-1) * (high_lr - low_lr);
